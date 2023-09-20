@@ -1,0 +1,1 @@
+The Point of Sale (POS) application seamlessly integrates with "MegaPos," the central management system. Through URL requests, it retrieves vital data required for processing and printing orders. This powerful synergy ensures efficient and accurate order management, streamlining the entire sales process for businesses.
