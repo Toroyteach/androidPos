@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.ahmadabuhasan.skripsi">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_me"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_me_round"
+        android:supportsRtl="true"
+        android:theme="@style/Skripsi"
+        android:usesCleartextTraffic="true"
+        tools:targetApi="p">
+        <activity android:name=".settings.SettingsWarehouse" />
+        <activity android:name=".WarehouseDashboard" />
+        <activity android:name=".cashier.DetailsProduct" />
+        <activity android:name=".cashier.ScannerActivity" />
+        <activity android:name=".cashier.ProductCart" />
+        <activity android:name=".cashier.PosActivity" />
+        <activity android:name=".CashierDashboard" />
+        <activity android:name=".pdf_report.ViewPDFActivity" />
+        <activity android:name=".suppliers.EditSuppliersActivity" />
+        <activity android:name=".suppliers.AddSuppliersActivity" />
+        <activity android:name=".suppliers.SuppliersActivity" />
+        <activity android:name=".customers.EditCustomersActivity" />
+        <activity android:name=".customers.AddCustomersActivity" />
+        <activity android:name=".customers.CustomersActivity" />
+        <activity android:name=".report.ExpenseGraphActivity" />
+        <activity android:name=".report.SalesGraphActivity" />
+        <activity android:name=".report.ExpenseReportActivity" />
+        <activity android:name=".report.SalesReportActivity" />
+        <activity android:name=".report.ReportActivity" />
+        <activity android:name=".expense.EditExpenseActivity" />
+        <activity android:name=".expense.AddExpenseActivity" />
+        <activity android:name=".expense.ExpenseActivity" />
+        <activity android:name=".settings.backup.BackupActivity" />
+        <activity android:name=".settings.payment_method.EditPaymentMethodActivity" />
+        <activity android:name=".settings.payment_method.AddPaymentMethodActivity" />
+        <activity android:name=".settings.payment_method.PaymentMethodActivity" />
+        <activity android:name=".settings.weight_unit.EditWeightActivity" />
+        <activity android:name=".settings.weight_unit.AddWeightActivity" />
+        <activity android:name=".settings.weight_unit.WeightActivity" />
+        <activity android:name=".settings.categories.EditCategoryActivity" />
+        <activity android:name=".settings.categories.AddCategoryActivity" />
+        <activity android:name=".settings.categories.CategoriesActivity" />
+        <activity android:name=".settings.shop.ShopInformationActivity" />
+        <activity android:name=".settings.SettingsActivity" />
+        <activity android:name=".print.DeviceListActivity" />
+        <activity android:name=".print.OrderDetailsActivity" />
+        <activity android:name=".print.OrdersActivity" />
+        <activity android:name=".data.EditProductScannerViewActivity" />
+        <activity android:name=".data.EditProductActivity" />
+        <activity android:name=".data.ScannerViewActivity" />
+        <activity android:name=".data.AddProductActivity" />
+        <activity android:name=".data.ProductActivity" />
+        <activity android:name=".kasir.ProductCart" />
+        <activity android:name=".kasir.ScannerActivity" />
+        <activity android:name=".kasir.PosActivity" />
+        <activity android:name=".DashboardActivity" />
+        <activity android:name=".Auth.LoginActivity" />
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name="com.karumi.dexter.DexterActivity"
+            android:theme="@style/Dexter.Internal.Theme.Transparent" />
+        <activity
+            android:name="com.obsez.android.lib.filechooser.permissions.PermissionActivity"
+            android:label=""
+            android:theme="@style/Theme.Transparent" />
+        <activity
+            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+            android:exported="false"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+        <service
+            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+            android:exported="true"
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+            android:visibleToInstantApps="true" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.ahmadabuhasan.skripsi.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+    </application>
+
+</manifest>
