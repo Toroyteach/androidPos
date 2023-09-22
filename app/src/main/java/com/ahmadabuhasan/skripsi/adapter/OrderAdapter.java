@@ -22,6 +22,10 @@ import com.ahmadabuhasan.skripsi.print.OrderDetailsActivity;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 
@@ -64,7 +68,24 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         textView2.setText(this.context.getString(R.string.order_type) + " ");
 
         TextView textView3 = holder.textView_Date;
-        textView3.setText(this.orderData.get(position).getCreated_at());
+        String inputDateTime = OrderAdapter.this.orderData.get(position).getCreated_at();
+        Instant instant = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            instant = Instant.parse(inputDateTime);
+        }
+        ZonedDateTime zonedDateTime = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            zonedDateTime = instant.atZone(ZoneId.systemDefault());
+        }
+        DateTimeFormatter formatter = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        }
+        String formattedDateTime = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            formattedDateTime = zonedDateTime.format(formatter);
+        }
+        textView3.setText(formattedDateTime);
         holder.textView_OrderStatus.setText(orderStatus);
 
         if (orderStatus.equals(DatabaseOpenHelper.COMPLETED)) {
@@ -154,9 +175,31 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.MyViewHolder
         public void onClick(View view) {
             Intent i = new Intent(OrderAdapter.this.context, OrderDetailsActivity.class);
 
+            String inputDateTime = OrderAdapter.this.orderData.get(getAdapterPosition()).getCreated_at();
+            Instant instant = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                instant = Instant.parse(inputDateTime);
+            }
+            // Convert Instant to ZonedDateTime (in a specific time zone, if needed)
+            ZonedDateTime zonedDateTime = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                zonedDateTime = instant.atZone(ZoneId.systemDefault());
+            }
+            // Define the desired date-time format
+            DateTimeFormatter formatter = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            }
+            // Format the ZonedDateTime using the specified format
+            String formattedDateTime = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                formattedDateTime = zonedDateTime.format(formatter);
+            }
+
+
             i.putExtra(DatabaseOpenHelper.ORDER_LIST_ID, String.valueOf(OrderAdapter.this.orderData.get(getAdapterPosition()).getId()));
             i.putExtra(DatabaseOpenHelper.ORDER_LIST_CUSTOMER_NAME, OrderAdapter.this.orderData.get(getAdapterPosition()).getCustomer_name());
-            i.putExtra(DatabaseOpenHelper.ORDER_LIST_DATE, OrderAdapter.this.orderData.get(getAdapterPosition()).getCreated_at());
+            i.putExtra(DatabaseOpenHelper.ORDER_LIST_DATE, formattedDateTime);
 //            i.putExtra(DatabaseOpenHelper.ORDER_LIST_TIME, OrderAdapter.this.orderData.get(getAdapterPosition()).get);
             i.putExtra(DatabaseOpenHelper.ORDER_LIST_TAX, String.valueOf(OrderAdapter.this.orderData.get(getAdapterPosition()).getDiscount_percentage()));
             i.putExtra(DatabaseOpenHelper.ORDER_LIST_DISCOUNT, String.valueOf(OrderAdapter.this.orderData.get(getAdapterPosition()).getDiscount_amount()));

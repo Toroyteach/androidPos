@@ -114,14 +114,14 @@ public class TestPrinter implements IPrintToPrinter {
             this.name = this.orderDetailsList.get(i).getName();
 //            this.weight = this.orderDetailsList.get(i).get(DatabaseOpenHelper.ORDER_DETAILS_PRODUCT_WEIGHT);
             this.qty = String.valueOf(this.orderDetailsList.get(i).getQuantity());
-            this.price = String.valueOf(this.orderDetailsList.get(i).getPrice());
+            this.price = String.valueOf(this.orderDetailsList.get(i).getCost());
             double parseInt = (double) Integer.parseInt(this.qty);
             double parseDouble = Double.parseDouble(this.price);
             Double.isNaN(parseInt);
             this.cost_total = parseInt * parseDouble;
             String trim = this.name.trim();
 //            prnMng.leftRightAlign(trim, this.price + " x " + this.qty + " " + NumberFormat.getInstance(Locale.getDefault()).format(this.cost_total));
-            prnMng.printStr(trim+ "      " + this.price + " x " + this.qty + "     " + NumberFormat.getInstance(Locale.getDefault()).format(this.cost_total));
+            prnMng.printStr(trim+ "    " + this.price + " x  " + this.qty + "   " + NumberFormat.getInstance(Locale.getDefault()).format(this.cost_total));
         }
         prnMng.printStr("--------------------------------");
         prnMng.printStr("Sub Total: " + this.currency + " " + NumberFormat.getInstance(Locale.getDefault()).format(this.subTotal), 1, WoosimCmd.ALIGN_RIGHT);

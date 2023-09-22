@@ -163,7 +163,6 @@ public class ProductCart extends AppCompatActivity {
                         // Create and set the custom adapter
                         customerAdapter = new CustomerAdapter(this, customerModelList);
 
-
                     } else {
 
                         Toasty.info(this, (int) R.string.no_customer_found, Toasty.LENGTH_SHORT).show();
@@ -610,8 +609,6 @@ public class ProductCart extends AppCompatActivity {
 
         String BASE_URL = "https://"+tenantUrl+".megapos.co.ke/api/orders/create";
 
-        System.out.println("the base url "+BASE_URL);
-
         // Create the request
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, BASE_URL, orderJson,
                 new Response.Listener<JSONObject>() {
@@ -649,7 +646,6 @@ public class ProductCart extends AppCompatActivity {
                         // Handle error response if needed
                         progressBar.setVisibility(View.GONE);
                         //Toast.makeText(com.ahmadabuhasan.skripsi.cashier.ProductCart.this, "Error: " + error.toString(), Toast.LENGTH_SHORT).show();
-                        System.out.println(error.toString());
                     }
                 }) {
             @Override
