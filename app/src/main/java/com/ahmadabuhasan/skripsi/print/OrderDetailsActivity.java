@@ -164,7 +164,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
                         double totalAmount = 0.0;
 
                         for (OrderDetailsModel item : orderDetails) {
-                            double unitPrice = item.getPrice();
+                            double unitPrice = item.getCost();
                             int quantity = item.getQuantity();
 
                             double itemTotal = unitPrice * quantity;
@@ -237,7 +237,7 @@ public class OrderDetailsActivity extends AppCompatActivity {
         double totalAmount = 0.0;
 
         for (OrderDetailsModel item : orderDetails) {
-            double unitPrice = item.getPrice();
+            double unitPrice = item.getCost();
             int quantity = item.getQuantity();
 
             double itemTotal = unitPrice * quantity;

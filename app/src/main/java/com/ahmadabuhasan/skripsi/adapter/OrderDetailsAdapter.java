@@ -58,7 +58,7 @@ public class OrderDetailsAdapter extends RecyclerView.Adapter<OrderDetailsAdapte
         String imageUrl = this.orderData.get(position).getImgUrl();
         Picasso.get().load(imageUrl).into(holder.imgProduct);
 
-        String unit_price = String.valueOf(this.orderData.get(position).getPrice());
+        String unit_price = String.valueOf(this.orderData.get(position).getCost());
         String qty = String.valueOf(this.orderData.get(position).getQuantity());
 
         double price = Double.parseDouble(unit_price);
